@@ -6,10 +6,9 @@ const TaskDetail = ({ tasks }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   
-  // Tìm công việc (Chuyển id từ URL sang kiểu Number)
   const task = tasks.find(t => t.id === Number(id));
 
-  // Nếu người dùng gõ link bậy bạ (ví dụ /tasks/99)
+
   if (!task) {
     return <div><strong>Không tìm thấy công việc.</strong></div>;
   }

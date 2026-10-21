@@ -7,7 +7,6 @@ const Home = ({ tasks, loading, error }) => {
   const totalTasks = tasks.length;
   const doneTasks = tasks.filter(t => t.done).length;
   
-  // Dùng reduce để tính tổng số giờ còn lại (của các việc chưa xong)
   const remainingHours = tasks.reduce((total, task) => {
     return !task.done ? total + task.hours : total;
   }, 0);

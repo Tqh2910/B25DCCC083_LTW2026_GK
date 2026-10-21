@@ -12,7 +12,6 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // Tải dữ liệu API theo chuẩn đề bài
   useEffect(() => {
     const controller = new AbortController();
     const localTasks = localStorage.getItem('gk_tasks');
@@ -33,10 +32,10 @@ const App = () => {
           }
         });
     }
-    return () => controller.abort(); // Cleanup unmounting
+    return () => controller.abort(); 
   }, []);
 
-  // Cập nhật LocalStorage mỗi khi tasks thay đổi
+
   useEffect(() => {
     if (!loading) {
       localStorage.setItem('gk_tasks', JSON.stringify(tasks));

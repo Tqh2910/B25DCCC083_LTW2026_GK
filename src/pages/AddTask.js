@@ -6,27 +6,27 @@ const AddTask = ({ onAdd, currentTasks }) => {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [assignee, setAssignee] = useState('');
-  const [priority, setPriority] = useState('Trung bình'); // Mặc định Trung bình
+  const [priority, setPriority] = useState('Trung bình');
   const [hours, setHours] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Chặn load lại trang
+    e.preventDefault(); 
     
-    // 1. Kiểm tra ô trống
+    
     if (!title.trim() || !assignee.trim() || !hours) {
       setError('Vui lòng nhập đầy đủ thông tin');
       return;
     }
 
-    // 2. Kiểm tra số giờ (từ 1 đến 40)
+    
     const numHours = Number(hours);
     if (!Number.isInteger(numHours) || numHours < 1 || numHours > 40) {
       setError('Số giờ phải từ 1 đến 40');
       return;
     }
 
-    // Lấy ID lớn nhất hiện tại cộng 1 (nếu mảng rỗng thì ID = 1)
+    
     const maxId = currentTasks.length > 0 ? Math.max(...currentTasks.map(t => t.id)) : 0;
 
     const newTask = {
@@ -35,12 +35,12 @@ const AddTask = ({ onAdd, currentTasks }) => {
       assignee: assignee.trim(),
       priority,
       hours: numHours,
-      done: false // Mặc định Đang làm
+      done: false 
     };
 
     onAdd(newTask);
     
-    // Chuyển về trang Danh sách (dùng replace: true để ngăn nút Back quay lại form)
+    
     navigate('/tasks', { replace: true });
   };
 
